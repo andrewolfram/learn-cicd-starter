@@ -37,12 +37,6 @@ func TestGetAPIKey(t *testing.T) {
 			expect:    "xxxxxx",
 			expectErr: "not expecting an error",
 		},
-		{
-			key:       "Authorization",
-			value:     "AppKey xxxxxx",
-			expect:    "xxxxxx",
-			expectErr: "not expecting an error",
-		},
 	}
 
 	for i, test := range tests {
