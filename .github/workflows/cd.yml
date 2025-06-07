@@ -21,12 +21,13 @@ jobs:
       - name: Run tests
         run: ./scripts/buildprod.sh
 
-      - name: Set up Google Cloud SDK
-        uses: google-github-actions/setup-gcloud@v2
+      - id: 'auth'
+        uses: 'google-github-actions/auth@v2'
         with:
-            project_id: notely-462209
-            service_account_key: ${{ secrets.GCP_CREDENTIALS }}
-            export_default_credentials: true
+            credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v2'
 
       - name: Submit image to Artifact Registry via Cloud Build
         run: |
